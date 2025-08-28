@@ -184,7 +184,7 @@ impl SpireCoroutine {
 
 	fn de_spawn(&mut self) {
 		let base = self.base();
-		let mut base = base.to_godot();
+		let mut base: &mut godot::prelude::Gd<godot::prelude::Node> = base.to_godot();
 
 		if let Some(mut parent) = base.get_parent() {
 			parent.remove_child(base)
