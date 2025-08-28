@@ -183,11 +183,10 @@ impl SpireCoroutine {
 	}
 
 	fn de_spawn(&mut self) {
-		let mut base = self.base_mut();
-		let mut base = base.to_godot();
+		let mut base = self.base().to_godot_owned();
 
 		if let Some(mut parent) = base.get_parent() {
-			parent.remove_child(base)
+			parent.remove_child(&base)
 		}
 
 		base.queue_free();
